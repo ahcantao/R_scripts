@@ -1,14 +1,16 @@
-#change the base_path_from and base_path_to
+#!/usr/bin/env Rscript
 #this script automates the copy of files going throught many folders 
 #and copying only the files on the "average" folder.
 #----------------------------------------------------------------
-base_path_from <- "C:/temp/dataset_test"
+#insert the path manually
+cat("Insert the full path to the datasets' folder: ")
+base_path_from <- as.character(readLines("stdin",n=1))
 base_path_to <- paste0(base_path_from,"/dataset_averages")
 #create a list of folders named "*_noisy" in the script directory... ie: "*_noisy_" is not in the list
 dataset_names <- list.files(path = base_path_from, pattern = "_noisy$")
 cat(length(dataset_names), 'datasets found\n')
 #dataset names can also be given manually (bellow)
-#dataset_names <- list("blobs_c3_d2")
+#dataset_names <- list("dataset1", "dataset2")
 #kfolds and noisy_features are the folders I need to go throught
 kfolds <- list("001","002","003","004","005","006","007","008","009","010")
 noisy_features <- list("001", "002", "004", "008", "016", "032", "064","128","256","512","1024")
